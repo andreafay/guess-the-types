@@ -23,7 +23,7 @@ const TypesGrid = ({ onTypeClick }) => {
     };
 
     return (
-        <div className="grid grid-cols-3 gap-1 mt-8">
+        <div className="grid grid-cols-3 gap-1 mt-6">
             {Object.keys(typeColor).map((type, index) => (
                 <button
                     key={index}
