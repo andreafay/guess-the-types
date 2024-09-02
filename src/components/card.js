@@ -95,14 +95,14 @@ const Card = ({ onGuess }) => {
 
     return (
         <div
-            className="mt-10 p-2 rounded"
+            className="p-2 rounded"
             style={{
                 opacity: isVisible ? 1 : 0,
                 transition: 'opacity 0.5s',
                 visibility: loading ? 'hidden' : 'visible',
             }}>
             <h2 id="poke-name" className="text-4xl text-center">{pokeName}</h2>
-            <img id="sprite" className="w-52 h-52" src={imgSrc} alt={pokeName} />
+            <img id="sprite" className="w-44 h-44" src={imgSrc} alt={pokeName} />
             <div id="types" className="flex justify-center mt-2 space-x-2">
                 {typeNames.map((type, index) => (
                     <span
