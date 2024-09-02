@@ -101,7 +101,7 @@ const Card = ({ onGuess }) => {
                 transition: 'opacity 0.5s',
                 visibility: loading ? 'hidden' : 'visible',
             }}>
-            <h2 id="poke-name" className="text-4xl text-center">{pokeName}</h2>
+            <h2 id="poke-name" className="text-3xl text-center">{pokeName}</h2>
             <img id="sprite" className="w-44 h-44" src={imgSrc} alt={pokeName} />
             <div id="types" className="flex justify-center mt-2 space-x-2">
                 {typeNames.map((type, index) => (

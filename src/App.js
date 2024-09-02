@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="min-h-screen min-w-full bg-orange-200 flex flex-col items-center">
       <div id="container" className="w-full max-w-4xl flex flex-col items-center">
-        <div id="title" className="text-3xl mt-1 mb-4">
-          <p className="text-5xl font-semibold">Guess the types!</p>
+        <div id="title" className="mt-1 mb-2">
+          <p className="text-4xl font-semibold">Guess the types!</p>
         </div>
         <div className="mr-48">
           <Stats></Stats>

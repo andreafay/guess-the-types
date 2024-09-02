@@ -3,9 +3,9 @@ import React from "react";
 const Stats = () => {
         return (
         <div>
-            <p className="text-xl">Lives remaining: </p>
-            <p className="text-xl">Pokémon guessed: </p>
-            <p className="text-xl">Record: </p>
+            <p className="text-lg">Lives remaining: </p>
+            <p className="text-lg">Pokémon guessed: </p>
+            <p className="text-lg">Record: </p>
         </div>
     );
 };
