@@ -95,7 +95,7 @@ const Card = ({ onGuess }) => {
 
     return (
         <div
-            className="p-2 rounded"
+            className="p-1 rounded"
             style={{
                 opacity: isVisible ? 1 : 0,
                 transition: 'opacity 0.5s',
@@ -103,11 +103,11 @@ const Card = ({ onGuess }) => {
             }}>
             <h2 id="poke-name" className="text-3xl text-center">{pokeName}</h2>
             <img id="sprite" className="w-44 h-44" src={imgSrc} alt={pokeName} />
-            <div id="types" className="flex justify-center mt-2 space-x-2">
+            <div id="types" className="flex justify-center mt-1 space-x-2">
                 {typeNames.map((type, index) => (
                     <span
                         key={index}
-                        className="px-4 py-1 text-white text-center border border-black rounded-2xl"
+                        className="px-2 py-1 text-white text-center border border-black rounded-2xl"
                         style={{
                             backgroundColor: type.color,
                             visibility: revealedTypes.includes(type.name) ? 'visible' : 'hidden',
