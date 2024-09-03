@@ -61,7 +61,7 @@ const Card = ({ onGuess, onCorrectGuess, onIncorrectGuess, onNewPokemon, resetGa
         setIsVisible(true);
         setLoading(false);
 
-        onNewPokemon(pokeName, typeColors); // Notify about the new Pokémon
+        onNewPokemon(pokeName, typeColors);
     }, [typeColor, onNewPokemon]);
 
     useEffect(() => {
@@ -77,7 +77,7 @@ const Card = ({ onGuess, onCorrectGuess, onIncorrectGuess, onNewPokemon, resetGa
 
     useEffect(() => {
         if (resetGame) {
-            fetchPokeData(); // Fetch a new Pokémon when the game is reset
+            fetchPokeData();
         }
     }, [resetGame, fetchPokeData]);
 
@@ -87,7 +87,7 @@ const Card = ({ onGuess, onCorrectGuess, onIncorrectGuess, onNewPokemon, resetGa
                 const newRevealedTypes = [...new Set([...prevRevealedTypes, type])];
 
                 if (newRevealedTypes.length === typeNames.length) {
-                    onCorrectGuess(); // Notify that the Pokémon was guessed correctly
+                    onCorrectGuess();
                     setTimeout(() => {
                         fetchPokeData();
                     }, 1000);
@@ -96,7 +96,7 @@ const Card = ({ onGuess, onCorrectGuess, onIncorrectGuess, onNewPokemon, resetGa
                 return newRevealedTypes;
             });
         } else {
-            onIncorrectGuess(); // Notify that the guess was incorrect
+            onIncorrectGuess();
         }
     }, [typeNames, fetchPokeData, onCorrectGuess, onIncorrectGuess]);
 
@@ -106,7 +106,7 @@ const Card = ({ onGuess, onCorrectGuess, onIncorrectGuess, onNewPokemon, resetGa
 
     return (
         <div
-            className="p-1 rounded"
+            className="rounded"
             style={{
                 opacity: isVisible ? 1 : 0,
                 transition: 'opacity 0.5s',
@@ -114,7 +114,7 @@ const Card = ({ onGuess, onCorrectGuess, onIncorrectGuess, onNewPokemon, resetGa
             }}>
             <h2 id="poke-name" className="text-2xl text-center">{pokeName}</h2>
             <img id="sprite" className="w-44 h-44" src={imgSrc} alt={pokeName} />
-            <div id="types" className="flex justify-center mt-1 space-x-2">
+            <div id="types" className="flex justify-center space-x-2">
                 {typeNames.map((type, index) => (
                     <span
                         key={index}

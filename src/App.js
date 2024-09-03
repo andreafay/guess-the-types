@@ -15,33 +15,33 @@ function App() {
   const handleIncorrectGuess = useCallback(() => {
     setLives((prevLives) => {
       const newLives = Math.max(prevLives - 1, 0);
-      if (newLives === 0) {
-        setGameOver(true); // Trigger game over when lives reach 0
+      if (newLives <= 0) {
+        setGameOver(true);
       }
       return newLives;
     });
   }, []);
 
   const handleCorrectGuess = useCallback(() => {
-    setGuessed((prevGuessed) => prevGuessed + 1); // Increment guessed Pokémon count
+    setGuessed((prevGuessed) => prevGuessed + 1);
   }, []);
 
   const handleRestart = useCallback(() => {
-    setLives(3); // Reset lives
-    setGuessed(0); // Reset guessed count
-    setGameOver(false); // Hide game over screen
-    setResetGame(true); // Trigger reset for the Card component
+    setLives(3);
+    setGuessed(0);
+    setGameOver(false);
+    setResetGame(true);
   }, []);
 
   const handleNewPokemon = useCallback((name, types) => {
-    setLastPokemon({ name, types }); // Save the last Pokémon's name and types
-    setResetGame(false); // Reset game trigger back to false after fetching new Pokémon
+    setLastPokemon({ name, types });
+    setResetGame(false);
   }, []);
 
   return (
     <div className="min-h-screen min-w-full bg-orange-200 flex flex-col items-center">
       <div id="container" className="w-full max-w-4xl flex flex-col items-center">
-        <div id="title" className="mt-1 mb-2">
+        <div id="title" className="my-1">
           <p className="text-4xl font-semibold">Guess the types!</p>
         </div>
         <div className="mr-48">
@@ -52,7 +52,7 @@ function App() {
           onCorrectGuess={handleCorrectGuess}
           onIncorrectGuess={handleIncorrectGuess}
           onNewPokemon={handleNewPokemon}
-          resetGame={resetGame} // Pass the resetGame state to the Card component
+          resetGame={resetGame}
         />
         <TypesGrid onTypeClick={revealType} />
       </div>
