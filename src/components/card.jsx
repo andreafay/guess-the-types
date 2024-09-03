@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 
-const Card = ({ onGuess }) => {
+const Card = ({ onGuess, onCorrectGuess, onIncorrectGuess, onNewPokemon, resetGame }) => {
     const url = "https://pokeapi.co/api/v2/pokemon/";
     const [pokeName, setPokeName] = useState("");
     const [imgSrc, setImgSrc] = useState("");
@@ -60,7 +60,9 @@ const Card = ({ onGuess }) => {
         setRevealedTypes([]);
         setIsVisible(true);
         setLoading(false);
-    }, [typeColor]);
+
+        onNewPokemon(pokeName, typeColors); // Notify about the new Pokémon
+    }, [typeColor, onNewPokemon]);
 
     useEffect(() => {
         fetchPokeData();
@@ -73,12 +75,19 @@ const Card = ({ onGuess }) => {
         }
     }, [newPokeData, generateCard]);
 
+    useEffect(() => {
+        if (resetGame) {
+            fetchPokeData(); // Fetch a new Pokémon when the game is reset
+        }
+    }, [resetGame, fetchPokeData]);
+
     const revealType = useCallback((type) => {
         if (typeNames.some(t => t.name === type)) {
             setRevealedTypes(prevRevealedTypes => {
                 const newRevealedTypes = [...new Set([...prevRevealedTypes, type])];
 
                 if (newRevealedTypes.length === typeNames.length) {
+                    onCorrectGuess(); // Notify that the Pokémon was guessed correctly
                     setTimeout(() => {
                         fetchPokeData();
                     }, 1000);
@@ -86,8 +95,10 @@ const Card = ({ onGuess }) => {
 
                 return newRevealedTypes;
             });
+        } else {
+            onIncorrectGuess(); // Notify that the guess was incorrect
         }
-    }, [typeNames, fetchPokeData]);
+    }, [typeNames, fetchPokeData, onCorrectGuess, onIncorrectGuess]);
 
     useEffect(() => {
         onGuess(() => revealType);
