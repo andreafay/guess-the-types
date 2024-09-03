@@ -63,7 +63,7 @@ function App() {
         <div id="title" className="my-1">
           <p className="text-4xl font-semibold">Guess the types!</p>
         </div>
-        <div className="width-full mr-44">
+        <div className="width-full text-nowrap mr-44">
           <Stats lives={lives} guessed={guessed} record={record} />
         </div>
         <Card
