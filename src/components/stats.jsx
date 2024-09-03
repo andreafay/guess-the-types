@@ -27,10 +27,10 @@ const Stats = ({ lives, guessed, record }) => {
     return (
         <div>
             <p className="text-md" style={{ color: livesColor, transition: "color 0.5s" }}>
-                Lives remaining: {lives}
+                Remaining lives: {lives}
             </p>
             <p className="text-md" style={{ color: guessedColor, transition: "color 0.5s" }}>
-                Pokémon guessed: {guessed}
+                Guessed pokémon: {guessed}
             </p>
             <p className="text-md">Record: {record}</p>
         </div>
