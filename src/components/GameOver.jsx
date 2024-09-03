@@ -5,8 +5,8 @@ const GameOver = ({ guessed, pokemonName, pokemonTypes, onRestart }) => {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg text-center">
         <h2 className="text-3xl font-semibold mb-4">You lost!</h2>
-        <p className="text-xl">You guessed {guessed} pokémons</p>
-        <p className="text-xl">Last Pokémon was {pokemonName}</p>
+        <p className="text-xl">You guessed {guessed} pokémon</p>
+        <p className="text-xl">Last pokémon was {pokemonName}</p>
         <div className="mt-4">
           {pokemonTypes.map((type, index) => (
             <span
