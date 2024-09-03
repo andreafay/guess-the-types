@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Card from "./components/card";
 import TypesGrid from "./components/typesGrid";
 import Stats from "./components/stats";
@@ -6,16 +6,28 @@ import GameOver from "./components/GameOver";
 
 function App() {
   const [revealType, setRevealType] = useState(() => () => {});
-  const [lives, setLives] = useState(3); // Initial lives
-  const [guessed, setGuessed] = useState(0); // Initial guessed Pokémon count
-  const [gameOver, setGameOver] = useState(false); // Track if the game is over
-  const [lastPokemon, setLastPokemon] = useState({ name: "", types: [] }); // Last Pokémon data
-  const [resetGame, setResetGame] = useState(false); // Track if the game should be reset
+  const [lives, setLives] = useState(3);
+  const [guessed, setGuessed] = useState(0);
+  const [record, setRecord] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [lastPokemon, setLastPokemon] = useState({ name: "", types: [] });
+  const [resetGame, setResetGame] = useState(false);
+
+  useEffect(() => {
+    const savedRecord = localStorage.getItem('record');
+    if (savedRecord) {
+        setRecord(Number(savedRecord));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('record', record);
+  }, [record]);
 
   const handleIncorrectGuess = useCallback(() => {
     setLives((prevLives) => {
       const newLives = Math.max(prevLives - 1, 0);
-      if (newLives < 0) {
+      if (newLives === 0) {
         setGameOver(true);
       }
       return newLives;
@@ -23,8 +35,15 @@ function App() {
   }, []);
 
   const handleCorrectGuess = useCallback(() => {
-    setGuessed((prevGuessed) => prevGuessed + 1);
-  }, []);
+    setGuessed((prevGuessed) => {
+      const newGuessed = prevGuessed + 1;
+      // Check and update record
+      if (newGuessed > record) {
+        setRecord(newGuessed);
+      }
+      return newGuessed;
+    });
+  }, [record]);
 
   const handleRestart = useCallback(() => {
     setLives(3);
@@ -45,7 +64,7 @@ function App() {
           <p className="text-4xl font-semibold">Guess the types!</p>
         </div>
         <div className="mr-48">
-          <Stats lives={lives} guessed={guessed} />
+          <Stats lives={lives} guessed={guessed} record={record} />
         </div>
         <Card
           onGuess={setRevealType}
@@ -58,6 +77,7 @@ function App() {
       </div>
       {gameOver && (
         <GameOver
+          guessed={guessed}
           pokemonName={lastPokemon.name}
           pokemonTypes={lastPokemon.types}
           onRestart={handleRestart}

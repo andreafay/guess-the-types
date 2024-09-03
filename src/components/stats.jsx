@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Stats = ({ lives, guessed }) => {
+const Stats = ({ lives, guessed, record }) => {
     const [livesColor, setLivesColor] = useState("black");
     const [guessedColor, setGuessedColor] = useState("black");
 
@@ -32,7 +32,7 @@ const Stats = ({ lives, guessed }) => {
             <p className="text-md" style={{ color: guessedColor, transition: "color 0.5s" }}>
                 Pokémon guessed: {guessed}
             </p>
-            <p className="text-md">Record: </p>
+            <p className="text-md">Record: {record}</p>
         </div>
     );
 };
