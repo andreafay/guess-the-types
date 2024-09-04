@@ -65,7 +65,7 @@ function App() {
     <div className={`${darkMode && "dark"}`}>
       <div className="min-h-screen min-w-full bg-red-200 dark:bg-neutral-900 flex flex-col items-center">
         <div id="container" className="w-full max-w-4xl flex flex-col items-center">
-          <div id="title" className="my-1 flex w-full justify-around items-center">
+          <div id="title" className="my-1 flex w-full max-w-md justify-around items-center">
             <p className="dark:text-neutral-100 text-4xl font-semibold">Guess the types!</p>
             <button className="mt-1 w-9 h-9 bg-indigo-800 rounded dark:bg-amber-500 text-black dark:text-neutral-200"
             onClick={toggleDarkMode}>
