@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 const Stats = ({ lives, guessed, record }) => {
-    const [livesColor, setLivesColor] = useState("black");
-    const [guessedColor, setGuessedColor] = useState("black");
+    const [livesColor, setLivesColor] = useState("");
+    const [guessedColor, setGuessedColor] = useState("");
 
     useEffect(() => {
         if (lives !== 3) {
             setLivesColor("red");
             const timer = setTimeout(() => {
-                setLivesColor("black");
+                setLivesColor("");
             }, 1000);
             return () => clearTimeout(timer);
         }
@@ -18,7 +18,7 @@ const Stats = ({ lives, guessed, record }) => {
         if (guessed > 0) {
             setGuessedColor("green");
             const timer = setTimeout(() => {
-                setGuessedColor("black");
+                setGuessedColor("");
             }, 1000);
             return () => clearTimeout(timer);
         }
@@ -26,13 +26,13 @@ const Stats = ({ lives, guessed, record }) => {
 
     return (
         <div>
-            <p className="text-md" style={{ color: livesColor, transition: "color 0.5s" }}>
+            <p className="dark:text-neutral-100 text-md" style={{ color: livesColor}}>
                 Remaining lives: {lives}
             </p>
-            <p className="text-md" style={{ color: guessedColor, transition: "color 0.5s" }}>
+            <p className="dark:text-neutral-100 text-md" style={{ color: guessedColor}}>
                 Guessed pokémon: {guessed}
             </p>
-            <p className="text-md">Record: {record}</p>
+            <p className="dark:text-neutral-100 text-md">Record: {record}</p>
         </div>
     );
 };

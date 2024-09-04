@@ -112,13 +112,13 @@ const Card = ({ onGuess, onCorrectGuess, onIncorrectGuess, onNewPokemon, resetGa
                 transition: 'opacity 0.5s',
                 visibility: loading ? 'hidden' : 'visible',
             }}>
-            <h2 id="poke-name" className="text-2xl text-center">{pokeName}</h2>
+            <h2 id="poke-name" className="dark:text-neutral-100 text-2xl text-center">{pokeName}</h2>
             <img id="sprite" className="w-44 h-44" src={imgSrc} alt={pokeName} />
             <div id="types" className="flex justify-center space-x-2">
                 {typeNames.map((type, index) => (
                     <span
                         key={index}
-                        className="px-2 py-1 text-white text-center border border-black rounded-2xl"
+                        className="px-2 py-1 text-neutral-100 text-center border border-black dark:border-white rounded-2xl"
                         style={{
                             backgroundColor: type.color,
                             visibility: revealedTypes.includes(type.name) ? 'visible' : 'hidden',

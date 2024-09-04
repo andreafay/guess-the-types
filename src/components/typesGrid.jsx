@@ -27,7 +27,7 @@ const TypesGrid = ({ onTypeClick }) => {
             {Object.keys(typeColor).map((type, index) => (
                 <button
                     key={index}
-                    className="px-3 py-1 text-white text-center border border-black rounded-2xl m-1"
+                    className="px-3 py-1 text-neutral-100 text-center border border-black dark:border-white rounded-2xl m-1"
                     style={{ backgroundColor: typeColor[type] }}
                     onClick={() => onTypeClick(type)}>
                     {type[0].toUpperCase() + type.slice(1)}
