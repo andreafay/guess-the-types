@@ -27,7 +27,7 @@ const Stats = ({ lives, guessed, record }) => {
     return (
         <div>
             <p className="dark:text-neutral-100 text-md" style={{ color: livesColor}}>
-                Remaining lives: {lives}
+                Remaining lives: {Math.max(lives, 0)}
             </p>
             <p className="dark:text-neutral-100 text-md" style={{ color: guessedColor}}>
                 Guessed pokémon: {guessed}

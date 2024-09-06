@@ -31,8 +31,8 @@ function App() {
 
   const handleIncorrectGuess = useCallback(() => {
     setLives((prevLives) => {
-      const newLives = Math.max(prevLives - 1, 0);
-      if (newLives === 0) {
+      const newLives = prevLives - 1;
+      if (newLives < 0) {
         setGameOver(true);
       }
       return newLives;
