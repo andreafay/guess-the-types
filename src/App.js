@@ -79,7 +79,7 @@ function App() {
               )}
             </button>
           </div>
-          <div className="width-full text-nowrap mr-44">
+          <div className="width-full text-nowrap mr-64">
             <Stats lives={lives} guessed={guessed} record={record} />
           </div>
           <Card
