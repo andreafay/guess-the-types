@@ -3,6 +3,7 @@ import Card from "./components/card";
 import TypesGrid from "./components/typesGrid";
 import Stats from "./components/stats";
 import GameOver from "./components/GameOver";
+import Footer from "./components/footer";
 
 function App() {
   const [revealType, setRevealType] = useState(() => () => {});
@@ -90,6 +91,7 @@ function App() {
             resetGame={resetGame}
           />
           <TypesGrid onTypeClick={revealType} />
+          <Footer className="mt-auto" />
         </div>
         {gameOver && (
           <GameOver
